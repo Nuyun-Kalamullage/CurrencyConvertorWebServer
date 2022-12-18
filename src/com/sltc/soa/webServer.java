@@ -15,12 +15,12 @@ public class webServer {
         double result = 0.0;
         result = baseAmount * tempRate.getSecondaryCurrencyRate() / tempRate.getBaseCurrencyRate();
         tempRate.show();
-        System.out.println("Send calculated "+result+" amount to client.");
+        System.out.println("Sending calculated "+result+" amount to client.\n");
 
         return result;
     }
     public static void main(String[] args){
-        Endpoint.publish("http://localhost:8888/DemoWebService", new webServer());
+        Endpoint.publish("http://localhost:8888/SoapWebService", new webServer());
         new currencyRate();
     }
 }
