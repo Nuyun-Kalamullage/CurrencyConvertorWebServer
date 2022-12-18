@@ -8,4 +8,4 @@ wsimport.exe -keep -d ..\DemoWebServiceClient\src\com\sltc\soa\client -p stub ht
 
 wsimport.exe -keep -d D:\IdeaProjects\CurenncyConvertorClient\Stub -p edu.sltc.curenncyconvertorclient.stub http://localhost:8888/DemoWebService?wsdl
 wsimport.exe -keep -d D:\IdeaProjects\CurenncyConvertorClient\src\main\java\Stub -p stub http://localhost:8888/DemoWebService?wsdl
-wsimport.exe -keep -d D:\IdeaProjects\CurenncyConvertorClient\src\main\java\Stub -p stub http://localhost:8888/DemoWebService?wsdl
+wsimport.exe -keep -d ..\CurenncyConvertorClient\src\main\java\Stub -p stub http://localhost:8888/DemoWebService?wsdl

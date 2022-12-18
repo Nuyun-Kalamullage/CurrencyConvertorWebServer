@@ -4,7 +4,6 @@ import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.xml.ws.Endpoint;
-import java.util.*;
 
 @WebService
 @SOAPBinding(style = SOAPBinding.Style.DOCUMENT)
@@ -18,21 +17,13 @@ public class webServer {
         System.out.println(result);
         return result;
     }
-    @WebMethod
-    public String getKeyList(){
-        String list="";
-        Set<String> listCurr = new HashSet<>();
-        listCurr = new currencyRate().rateList.keySet();
-        for (String s: listCurr) {
-            list = list+s+"_";
-        }
-        //new currencyRate().rateList.keySet()
-        System.out.println(list);
-        return list;
-    }
 
     public static void main(String[] args){
         Endpoint.publish("http://localhost:8888/DemoWebService", new webServer());
-        new webServer().getKeyList();
+//        currencyRate tempRate = new currencyRate("Sri Lankan Rupee","Barbadian Dollar");
+//        tempRate.show();
+//        Double rate = tempRate.rateList.get("BBD");
+//        System.out.println(rate);
+
     }
 }
