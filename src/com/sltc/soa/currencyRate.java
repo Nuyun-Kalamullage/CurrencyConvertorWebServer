@@ -1,12 +1,7 @@
 package com.sltc.soa;
 import com.sltc.soa.res.readJson;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.*;
 
 public class currencyRate {
     private String baseCurrency;
@@ -15,31 +10,26 @@ public class currencyRate {
     private double secondaryCurrencyRate;
     public static HashMap<String,Double> rateList = new HashMap<>();
     public static HashMap<String,String> rateNames = new HashMap<>();
-    public static HashMap<String,String> temp = new HashMap<>();
-
 
     public currencyRate(String baseCurrency, String secondaryCurrency) {
-        String s1 = readJson.ratesJson;
-        Object obj1 = JSONValue.parse(s1);
-        JSONObject jsonObject1 = (JSONObject) obj1;
-        rateList = (HashMap<String, Double>) jsonObject1.get("rates");
-        String s2 = readJson.currenciesJson;
-        Object obj2 = JSONValue.parse(s2);
-        JSONObject jsonObject2 = (JSONObject) obj2;
-        temp = (HashMap<String, String>) jsonObject2.get("names");
-        Set<String> values = temp.keySet();
-        Collection<String> keys =  temp.values();
-        int i=0;
-        for (String a :values) {
-            rateNames.put(keys.stream().collect(Collectors.toList()).get(i),a);
-            i++;
-        }
+
         this.baseCurrency = rateNames.get(baseCurrency);
         this.secondaryCurrency = rateNames.get(secondaryCurrency);
-
     }
 
-
+    public currencyRate() {
+        List<Double> rates = new ArrayList<Double>();
+        List<String> temporary = new ArrayList<String>(Arrays.asList(readJson.rates.split(",")));
+        for (String r :temporary) {
+            rates.add(Double.parseDouble(r));
+        }
+        List<String> names = new ArrayList<String>(Arrays.asList(readJson.shortNames.split(",")));
+        List<String> longNames = new ArrayList<String>(Arrays.asList(readJson.longNames.split(",")));
+        for (int i =0 ;i<names.size();i++) {
+            rateList.put(names.get(i), rates.get(i));
+            rateNames.put(longNames.get(i),names.get(i));
+        }
+    }
 
     public void show(){
         System.out.println(baseCurrency+" rate : "+baseCurrencyRate+"\n"+secondaryCurrency+" rate : "+secondaryCurrencyRate+"\n");

@@ -14,16 +14,13 @@ public class webServer {
         tempRate.updateRate();
         double result = 0.0;
         result = baseAmount * tempRate.getSecondaryCurrencyRate() / tempRate.getBaseCurrencyRate();
-        System.out.println(result);
+        tempRate.show();
+        System.out.println("Send calculated "+result+" amount to client.");
+
         return result;
     }
-
     public static void main(String[] args){
         Endpoint.publish("http://localhost:8888/DemoWebService", new webServer());
-//        currencyRate tempRate = new currencyRate("Sri Lankan Rupee","Barbadian Dollar");
-//        tempRate.show();
-//        Double rate = tempRate.rateList.get("BBD");
-//        System.out.println(rate);
-
+        new currencyRate();
     }
 }
