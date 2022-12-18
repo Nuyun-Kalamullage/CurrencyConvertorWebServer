@@ -12,8 +12,8 @@ public class currencyRate {
     private String secondaryCurrency;
     private double baseCurrencyRate;
     private double secondaryCurrencyRate;
-    private static HashMap<String,Double> rateList = new HashMap<>();
-    private static HashMap<String,String> rateNames = new HashMap<>();
+    private static final HashMap<String,Double> rateList = new HashMap<>();
+    private static final HashMap<String,String> rateNames = new HashMap<>();
 
     public currencyRate(String baseCurrency, String secondaryCurrency) {
         this.baseCurrency = rateNames.get(baseCurrency);
@@ -22,9 +22,9 @@ public class currencyRate {
 
     public currencyRate() {
 
-        List<String> rates = new ArrayList<String>(Arrays.asList(readJson.getRates().split(",")));
-        List<String> names = new ArrayList<String>(Arrays.asList(readJson.getShortNames().split(",")));
-        List<String> longNames = new ArrayList<String>(Arrays.asList(readJson.getLongNames().split(",")));
+        List<String> rates = new ArrayList<>(Arrays.asList(readJson.getRates().split(",")));
+        List<String> names = new ArrayList<>(Arrays.asList(readJson.getShortNames().split(",")));
+        List<String> longNames = new ArrayList<>(Arrays.asList(readJson.getLongNames().split(",")));
         try{
             for (int i =0 ;i<names.size();i++) {
                 rateList.put(names.get(i), Double.parseDouble(rates.get(i)));
