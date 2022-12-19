@@ -1,4 +1,4 @@
-package com.sltc.soa.res;
+package edu.sltc.currencyconvertorserver.res;
 
 public class readJson {
 

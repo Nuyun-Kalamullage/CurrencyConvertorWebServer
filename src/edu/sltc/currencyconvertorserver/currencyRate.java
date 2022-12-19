@@ -1,6 +1,6 @@
-package com.sltc.soa;
+package edu.sltc.currencyconvertorserver;
 
-import com.sltc.soa.res.readJson;
+import edu.sltc.currencyconvertorserver.res.readJson;
 
 import java.util.ArrayList;
 import java.util.Arrays;

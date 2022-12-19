@@ -1,4 +1,4 @@
-package com.sltc.soa;
+package edu.sltc.currencyconvertorserver;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
