@@ -9,7 +9,7 @@ import javax.xml.ws.Endpoint;
 @SOAPBinding(style = SOAPBinding.Style.DOCUMENT)
 public class webServer {
     @WebMethod
-    public double getAmount(String baseCurrency, String secondaryCurrency, double baseAmount){
+    public double getAmount(String baseCurrency, String secondaryCurrency, double baseAmount){ // this is the method that client resetting to the server.
         currencyRate tempRate = new currencyRate(baseCurrency,secondaryCurrency);
         tempRate.updateRate();
         double result = 0.0;
@@ -17,10 +17,10 @@ public class webServer {
         tempRate.show();
         System.out.println("Sending calculated "+result+" amount to client.\n");
 
-        return result;
+        return result; //return the calculated amount to user.
     }
     public static void main(String[] args){
-        Endpoint.publish("http://localhost:8888/SoapWebService", new webServer());
-        new currencyRate();
+        Endpoint.publish("http://localhost:8888/SoapWebService", new webServer()); //Hosting the wsdl file in given url for communicating with the client.
+        new currencyRate(); // make a new object to get the hashmap done.
     }
 }
