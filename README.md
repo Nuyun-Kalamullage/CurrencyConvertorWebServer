@@ -2,7 +2,7 @@
 >completed date: 20-12-2022
 
 This package includes,
->* 3 Java Files  ( webSever class, currencyRate class and readJson class )
+>* 3 Java Files  ( webSever class, currencyRate class and currenciesData class )
 >* 2 JSON files  ( currencies.json & rates.json )
 
 in this package,
